@@ -33,11 +33,11 @@ app.post('/', function(req, resp) {
     imgBlob;
   req.getConnection(function(err, conn) {
     if (err) {
-      console.err('sql error', err);
+      console.log('sql error', err);
     } else {
       conn.query('SELECT * FROM user WHERE firstName = ?', searchName, function(err, res) {
         if (err) {
-          console.err('sql error:', err);
+          console.log('sql error:', err);
         } else {
           console.log(res[0]);
           var writeStream = fs.createWriteStream('file.pdf');
