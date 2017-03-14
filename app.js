@@ -14,11 +14,10 @@ app.set('view engine', 'handlebars');
 
 app.use(require('body-parser').urlencoded({extended: true}));
 
-var dbOptions = {
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'users_db'
+var dbOptions = {  
+  host: process.env.RDS_HOSTNAME,  
+  user: process.env.RDS_USERNAME,
+  database: process.env.RDS_DB_NAME
 };
 
 app.use(myConnection(mysql, dbOptions, 'request'));
